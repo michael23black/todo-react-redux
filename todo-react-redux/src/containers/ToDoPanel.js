@@ -35,7 +35,6 @@ class ToDoPanel extends React.Component {
     }
   };
   render() {
-    let id = 0;
     return (
       <Container>
         <AddInput
@@ -43,12 +42,16 @@ class ToDoPanel extends React.Component {
           onChange={this.handleChange}
           addEvent={this.handleAdd}
         />
-        {this.props.tasks.map((item, index) => (
-          <ToDoItem
-            removeEvent={() => this.props.removeEvent(index)}
-            itemValue={item}
-          />
-        ))}
+        <TransitionGroup component={null}>
+          {this.props.tasks.map((item, index) => (
+            <CSSTransition classNames="todo-item" timeout={500} key={item.id}>
+              <ToDoItem
+                removeEvent={() => this.props.removeEvent(index)}
+                itemValue={item.task}
+              />
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
       </Container>
     );
   }
