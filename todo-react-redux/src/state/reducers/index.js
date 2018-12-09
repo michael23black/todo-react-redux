@@ -21,8 +21,8 @@ const todoReducer = (state = initialState, action) => {
       return {
         ...state,
         tasks: [
-          ...state.tasks.splice(0, action.payload.index),
-          ...state.tasks.splice(action.payload.index + 1)
+          ...state.tasks.slice(0, action.payload.index),
+          ...state.tasks.slice(action.payload.index + 1)
         ]
       };
     default:
