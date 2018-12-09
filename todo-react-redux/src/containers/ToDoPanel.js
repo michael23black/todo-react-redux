@@ -6,7 +6,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import AddInput from "../components/AddInput";
 import ToDoItem from "../components/ToDoItem";
 
-import { addTask, removeTask } from "./../state/actions";
+import { addTask, removeTask } from "../state/reducers/todo";
 
 const Container = styled.div`
   display: flex;
@@ -59,7 +59,7 @@ class ToDoPanel extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    tasks: state.todoReducer.tasks
+    tasks: state.todo.tasks
   };
 };
 
